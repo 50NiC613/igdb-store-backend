@@ -4,7 +4,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile.server
-    container_name: express-server
+    container_name: nodejs
     restart: unless-stopped
     ports:
       - 3000:3000
@@ -20,5 +20,7 @@ services:
       - 27017:27017
     volumes:
       - mongodb_data:/data/db
+    networks:
+      - app-network
 volumes:
   mongodb_data:
