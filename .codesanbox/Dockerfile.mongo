@@ -1,0 +1,9 @@
+# Utiliza la imagen base de MongoDB
+FROM mongo:6
+
+# Establece las variables de entorno para la inicialización de la base de datos
+ENV MONGO_INITDB_ROOT_USERNAME=admin
+ENV MONGO_INITDB_ROOT_PASSWORD=password
+
+# Expone el puerto 27017 para acceder a la base de datos
+EXPOSE 27017
