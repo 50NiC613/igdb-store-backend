@@ -1,5 +1,5 @@
 # Utiliza la imagen base de MongoDB
-FROM mongo:6
+FROM mongo:4
 
 # Establece las variables de entorno para la inicialización de la base de datos
 ENV MONGO_INITDB_ROOT_USERNAME=admin
