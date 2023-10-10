@@ -14,7 +14,8 @@ COPY package.json package-lock*.json ./
 
 # Instalar dependencias
 RUN pnpm install
-
+# Instala MongoDB
+RUN apt-get update && apt-get install -y mongodb
 # Copiar archivos de aplicación
 COPY . .
 
@@ -22,5 +23,5 @@ COPY . .
 EXPOSE 3000
 
 # Iniciar MongoDB y la aplicación
-CMD [ "npm", " run dev" ]
+CMD ["service mongodb start", "&&", "pnpm run dev" ]
 
