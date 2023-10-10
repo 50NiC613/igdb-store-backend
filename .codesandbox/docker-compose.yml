@@ -1,26 +1,18 @@
 version: '3'
 services:
-  nodejs:
+  app:
     build:
       context: .
-      dockerfile: Dockerfile.server
-    container_name: nodejs
-    restart: unless-stopped
+      dockerfile: Dockerfile
     ports:
-      - 3000:3000
+      - '3000:3000'
     depends_on:
-      - mongodb
-  mongodb:
-    build:
-      context: .
-      dockerfile: Dockerfile.mongo
-    container_name: mongodb
-    restart: unless-stopped
+      - db
+  db:
+    image: mongo
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: password
     ports:
-      - 27017:27017
-    volumes:
-      - mongodb_data:/data/db
-    networks:
-      - app-network
-volumes:
-  mongodb_data:
+      - '27017:27017'
