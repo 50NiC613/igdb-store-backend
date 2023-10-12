@@ -17,7 +17,7 @@
     "dev": {
       "name": "dev",
       "command": "npm run dev",
-      "runAtStart": true,
+      "runAtStart": false,
       "preview": {
         "port": 3000
       }
