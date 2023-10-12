@@ -8,18 +8,16 @@ const port = 3000;
 app.get("/", (req, res) => {
   res.send("¡Hola, mundo!");
 });
-let conectado = false;
 // Conexión a la base de datos
 mongoose
   .connect("mongodb://127.0.0.1:27017/gateway")
   .then(() => {
-    conectado = true;
     console.log("Conexión a la base de datos establecida");
   })
   .catch((err) => console.log(err));
 
 // Iniciar el servidor
-if (conectado)
-  app.listen(port, () => {
-    console.log(`Servidor escuchando en el puerto ${port}`);
-  });
+
+app.listen(port, () => {
+  console.log(`Servidor escuchando en el puerto ${port}`);
+});
