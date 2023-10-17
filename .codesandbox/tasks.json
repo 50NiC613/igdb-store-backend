@@ -4,9 +4,7 @@
     {
       "name": "Install Dependencies",
       "command": "npm install"
-    }
-  ],
-  "globals": [
+    },
     {
       "name": "Install Global Dependencies",
       "command": "npm install -g nodemon ts-node prettier typescript "
