@@ -6,18 +6,21 @@
       "command": "npm install"
     }
   ],
-
+  "globals": [
+    {
+      "name": "Install Global Dependencies",
+      "command": "npm install -g nodemon ts-node prettier typescript "
+    }
+  ],
   // These tasks can be run from CodeSandbox. Running one will open a log in the app.
   "tasks": {
     "test": {
       "name": "test",
-      "command": "npm run test",
-      "runAtStart": false
+      "command": "npm run test"
     },
     "dev": {
       "name": "dev",
       "command": "npm run dev",
-      "runAtStart": false,
       "preview": {
         "port": 3000
       }
