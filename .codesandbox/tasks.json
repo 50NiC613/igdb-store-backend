@@ -2,12 +2,12 @@
   // These tasks will run in order when initializing your CodeSandbox project.
   "setupTasks": [
     {
-      "name": "Install Dependencies",
-      "command": "npm install"
+      "name": "Install Global Dependencies",
+      "command": "npm install -g nodemon ts-node prettier typescript"
     },
     {
-      "name": "Install Global Dependencies",
-      "command": "npm install -g nodemon ts-node prettier typescript "
+      "name": "Install Dependencies",
+      "command": "npm install"
     }
   ],
   // These tasks can be run from CodeSandbox. Running one will open a log in the app.
