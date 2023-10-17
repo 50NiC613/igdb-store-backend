@@ -4,10 +4,8 @@ import * as mongoose from "mongoose";
 import { config } from "./config/config";
 const router = express();
 import Logging from "./library/Logging";
-// Ruta de prueba
-router.get("/", (req, res) => {
-  res.send("¡Hola, mundo!");
-});
+import gatewayRoutes from "./routes/Gateway";
+
 // Conexión a la base de datos
 mongoose
   .connect(config.mongo.url + "gateway", { retryWrites: true, w: "majority" })
@@ -50,14 +48,15 @@ router.use((req, res, next) => {
 });
 
 /** Routes */
-//router.use('/authors', authorRoutes);
+router.use("/gateways", gatewayRoutes);
 //router.use('/books', bookRoutes);
 
 /** Healthcheck */
 router.get("/ping", (req, res, next) =>
   res.status(200).json({ hello: "world" }),
 );
-
+/** Testt */
+router.get("/", (req, res, next) => res.status(200).json({ prueba: "ok" }));
 /** Error handling */
 router.use((req, res, next) => {
   const error = new Error("Not found");
