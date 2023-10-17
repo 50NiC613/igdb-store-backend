@@ -10,4 +10,4 @@ RUN npm install
 COPY . .
 
 EXPOSE 9090
-CMD [ "npm run", "start-gateway-server" ]
+CMD npm run start-gateway-server

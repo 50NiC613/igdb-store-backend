@@ -4,15 +4,26 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+    container_name: gateway-server
     ports:
       - '9090:9090'
     depends_on:
       - db
+    networks:
+      - backend
   db:
+    container_name: database
     image: mongo
-    restart: always
-    environment:
-      MONGO_INITDB_ROOT_USERNAME: admin
-      MONGO_INITDB_ROOT_PASSWORD: password
     ports:
-      - '27017:27017'
+      - "27017:27017"
+    volumes:
+      - data-db:/data/db
+    networks:
+      - backend
+networks:
+  backend:
+    driver: bridge
+
+volumes:
+    data-db:
+      
