@@ -1,42 +1,39 @@
-const express = require('express');
-const bodyParser = require('body-parser');
-const mongoose = require('mongoose');
-require('dotenv').config();
+import express from "express";
+import http from "http";
+import * as mongoose from "mongoose";
+import { config } from "./config/config";
+const router = express();
+const port = 3000;
+import Logging from "./library/Logging";
+// Ruta de prueba
+router.get("/", (req, res) => {
+  res.send("¡Hola, mundo!");
+});
+// Conexión a la base de datos
+mongoose
+  .connect(config.mongo.url + "peripheral", {
+    retryWrites: true,
+    w: "majority",
+  })
+  .then(() => {
+    Logging.info("Conexión a la base de datos gateway establecida");
+    StartServer();
+  })
+  .catch((err) => Logging.error(err));
 
-const customResourceResponse = require('./utils/constants');
-const db = require('./config/database');
-const bookRoutes = require('./routes/book');
-
-const app = express();
-app.use(bodyParser.json());
-
-mongoose.connect(db.booksMongoURI, {
-})
-  .then(() => console.log('Mongo Db Connected !'))
-  .catch((err) => console.log(err));
-
-// routes
-app.use('/api/v1', bookRoutes);
-
-// Basic 404 handler
-app.use((req, res) => {
-  res.status(404).send({
-    message: 'The requested URL could not be found.',
-    statusCode: 404,
+// Iniciar el servidor
+const StartServer = () => {
+  router.use((req, res, next) => {
+    Logging.info(
+      `Incoming - > Method: [${req.method}] - URL: [${req.url}] - IP [${req.socket.remoteAddress}]`,
+    );
+    res.on("finish", () => {
+      Logging.info(
+        `Incoming - > Method: [${req.method}] - URL: [${req.url}] - IP [${req.socket.remoteAddress}] - Status: [#{res.statusCode}]`,
+      );
+    });
+    next();
   });
-});
-
-app.use((error, req, res, next) => {
-  const { message } = customResourceResponse.serverError;
-  const data = {
-    Code: `${error.code ? error.code : ''}`,
-    Stacktrace: `${error.stack}`
-  };
-  res.status(500).json({ message, data });
-});
-
-const port = process.env.BOOKS_API_PORT || 8080;
-
-console.log(`Book server started and listening on port ${port}`);
-
-app.listen(port);
+  router.use(express.urlencoded({ extended: true }));
+  router.use(express.json());
+};
