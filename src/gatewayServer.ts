@@ -5,7 +5,7 @@ import { config } from "./config/config";
 const router = express();
 import Logging from "./library/Logging";
 import gatewayRoutes from "./routes/Gateway";
-Logging.info(config.mongo.url);
+
 // Conexión a la base de datos
 mongoose
   .connect(config.mongo.url + "gateway", { retryWrites: true, w: "majority" })

@@ -27,7 +27,7 @@
     "start-gateway-server": {
       "name": "start-gateway-server",
       "command": "npm run start-gateway-server",
-      "runAtStart": true
+      "runAtStart": false
     },
     "start-peripheral-server": {
       "name": "start-peripheral-server",

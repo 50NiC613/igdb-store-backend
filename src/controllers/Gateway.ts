@@ -32,7 +32,6 @@ const readGateway = (req: Request, res: Response, next: NextFunction) => {
 };
 
 const readAll = (req: Request, res: Response, next: NextFunction) => {
-  Logging.info("Tratando de leer gateways");
   return Gateway.find()
     .then((gateways) => res.status(200).json({ gateways }))
     .catch((error) => res.status(500).json({ error }));
