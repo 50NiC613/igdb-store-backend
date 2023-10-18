@@ -30,7 +30,6 @@ const StartServer = () => {
   });
   router.use(express.urlencoded({ extended: true }));
   router.use(express.json());
-};
 /** Rules */
 router.use((req, res, next) => {
   res.header("Access-Control-Allow-Origin", "*");
@@ -73,3 +72,4 @@ http
   .listen(config.gateway_server.port, () =>
     Logging.info(`Server is running on port ${config.gateway_server.port}`),
   );
+};

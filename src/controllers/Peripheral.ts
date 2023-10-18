@@ -23,7 +23,6 @@ const readPeripheral = (req: Request, res: Response, next: NextFunction) => {
   const peripheralId = req.params.peripheralId;
 
   return Peripheral.findById(peripheralId)
-    .populate("author")
     .then((peripheral) =>
       peripheral
         ? res.status(200).json({ peripheral })
