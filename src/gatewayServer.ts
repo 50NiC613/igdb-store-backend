@@ -70,6 +70,6 @@ router.use((req, res, next) => {
 
 http
   .createServer(router)
-  .listen(config.server.port, () =>
-    Logging.info(`Server is running on port ${config.server.port}`),
+  .listen(config.gateway_server.port, () =>
+    Logging.info(`Server is running on port ${config.gateway_server.port}`),
   );

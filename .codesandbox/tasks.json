@@ -15,9 +15,9 @@
       "runAtStart": false
     },
     "start": {
-      "name": "start",
-      "command": "npm run start",
-      "runAtStart": true
+      "name": "start-gateway",
+      "command": "npm run start-gateway-server",
+      "runAtStart": false
     },
     "test": {
       "name": "test",
@@ -27,7 +27,7 @@
     "start-gateway-server": {
       "name": "start-gateway-server",
       "command": "npm run start-gateway-server",
-      "runAtStart": false
+      "runAtStart": true
     },
     "start-peripheral-server": {
       "name": "start-peripheral-server",
