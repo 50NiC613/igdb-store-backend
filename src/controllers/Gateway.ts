@@ -1,7 +1,7 @@
 import { NextFunction, Request, Response } from "express";
 import mongoose from "mongoose";
 import Gateway from "../models/Gateway";
-
+import Logging from "../library/Logging";
 const createGateway = (req: Request, res: Response, next: NextFunction) => {
   const { serialNumber, name, ipv4Address, peripheralDevices } = req.body;
 
@@ -32,6 +32,7 @@ const readGateway = (req: Request, res: Response, next: NextFunction) => {
 };
 
 const readAll = (req: Request, res: Response, next: NextFunction) => {
+  Logging.info("Tratando de leer gateways");
   return Gateway.find()
     .then((gateways) => res.status(200).json({ gateways }))
     .catch((error) => res.status(500).json({ error }));
