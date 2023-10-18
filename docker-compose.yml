@@ -1,0 +1,29 @@
+version: '3'
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: gateway-server
+    ports:
+      - '9090:9090'
+    depends_on:
+      - db
+    networks:
+      - backend
+  db:
+    container_name: database
+    image: mongo
+    ports:
+      - "27017:27017"
+    volumes:
+      - data-db:/data/db
+    networks:
+      - backend
+networks:
+  backend:
+    driver: bridge
+
+volumes:
+    data-db:
+      
