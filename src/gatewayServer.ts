@@ -55,7 +55,7 @@ router.get("/ping", (req, res, next) =>
   res.status(200).json({ hello: "world" }),
 );
 /** Testt */
-router.get("/", (req, res, next) => res.status(200).json({ prueba: "ok" }));
+router.get("/", (req, res, next) => res.status(200).json({ gateway_server: "ok" }));
 /** Error handling */
 router.use((req, res, next) => {
   const error = new Error("Not found");
