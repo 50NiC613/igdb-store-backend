@@ -38,7 +38,7 @@ export const Schemas = {
       ipv4Address: Joi.string()
         .regex(/\b\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}\b/)
         .required(),
-      peripheralDevices: Joi.array().items().required(),
+      peripheralDevices: Joi.array().items().required().max(10),
       serialNumber: Joi.string().required(),
       name: Joi.string().required(),
     }),
@@ -49,6 +49,6 @@ export const Schemas = {
       peripheralDevices: Joi.array().items().required().max(10),
       serialNumber: Joi.string().required(),
       name: Joi.string().required(),
-    })    
+    }),
   },
 };

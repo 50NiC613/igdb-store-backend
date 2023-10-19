@@ -76,6 +76,14 @@ const addPeripheralToGateway = async (
       return res.status(404).json({ message: "Peripheral not found" });
     }
 
+    if (gateway.peripheralDevices.length >= 10) {
+      return res
+        .status(400)
+        .json({
+          message:
+            "Gateway already has the maximum number of peripheral devices",
+        });
+    }
     gateway.peripheralDevices.push(peripheral._id);
     await gateway.save();
     return res
