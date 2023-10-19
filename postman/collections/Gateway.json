@@ -1,0 +1,93 @@
+{
+	"info": {
+		"_postman_id": "a662423e-4758-419c-94f0-ef65efb62c25",
+		"name": "Gateway",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_uid": "11944534-a662423e-4758-419c-94f0-ef65efb62c25"
+	},
+	"item": [
+		{
+			"name": "ping",
+			"id": "fa6ab55e-5edb-4735-afa1-e9c59c8c9431",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://j9fvk6-9090.csb.app/ping",
+					"protocol": "https",
+					"host": [
+						"j9fvk6-9090",
+						"csb",
+						"app"
+					],
+					"path": [
+						"ping"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getGateways",
+			"id": "1058a6c1-ad5c-42a5-bf86-cefcd3a9a3d3",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://j9fvk6-9090.csb.app/gateways/get",
+					"protocol": "https",
+					"host": [
+						"j9fvk6-9090",
+						"csb",
+						"app"
+					],
+					"path": [
+						"gateways",
+						"get"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "createGateways",
+			"id": "93c18be1-17c5-4c2f-821b-ca215a5f3671",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"serialNumber\": \"123456\",\r\n    \"name\": \"Gateway 1\",\r\n    \"ipv4Address\": \"192.168.1.1\",\r\n    \"peripheralDevices\": [\"6530b5f950b2fe82efb224b6\"]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://j9fvk6-9090.csb.app/gateways/create",
+					"protocol": "https",
+					"host": [
+						"j9fvk6-9090",
+						"csb",
+						"app"
+					],
+					"path": [
+						"gateways",
+						"create"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
