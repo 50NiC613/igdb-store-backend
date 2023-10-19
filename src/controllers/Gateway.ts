@@ -24,7 +24,7 @@ const readGateway = (req: Request, res: Response, next: NextFunction) => {
   const gatewayId = req.params.gatewayId;
 
   return Gateway.findById(gatewayId)
-    .populate("peripheral")
+    .populate("peripheralDevices")
     .then((gateway) =>
       gateway
         ? res.status(200).json({ gateway })
