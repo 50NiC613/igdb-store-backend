@@ -2,7 +2,7 @@ import express from "express";
 import http from "http";
 import * as mongoose from "mongoose";
 import { config } from "./config/config";
-const router = express();
+export const router = express();
 import Logging from "./library/Logging";
 import gatewayRoutes from "./routes/Gateway";
 import peripheralRoutes from "./routes/Peripheral";
