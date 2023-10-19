@@ -1,5 +1,6 @@
 import { NextFunction, Request, Response } from "express";
 import mongoose from "mongoose";
+import { Types } from "mongoose";
 import Gateway from "../models/Gateway";
 import Logging from "../library/Logging";
 const createGateway = (req: Request, res: Response, next: NextFunction) => {

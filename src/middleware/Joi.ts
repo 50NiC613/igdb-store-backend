@@ -1,5 +1,4 @@
 import Joi, { ObjectSchema } from "joi";
-import JoiObjectId from "joi-objectid";
 import { NextFunction, Request, Response } from "express";
 import { IPeripheral } from "../models/Peripheral";
 import { IGateway } from "../models/Gateway";
@@ -39,7 +38,7 @@ export const Schemas = {
       ipv4Address: Joi.string()
         .regex(/\b\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}\b/)
         .required(),
-      peripheralDevices: Joi.array().items(JoiObjectId).required(),
+      peripheralDevices: Joi.array().items().required(),
       serialNumber: Joi.string().required(),
       name: Joi.string().required(),
     }),
@@ -47,7 +46,7 @@ export const Schemas = {
       ipv4Address: Joi.string()
         .regex(/\b\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}\b/)
         .required(),
-      peripheralDevices: Joi.string().required(),
+      peripheralDevices: Joi.array().items().required(),
       serialNumber: Joi.string().required(),
       name: Joi.string().required(),
     }),

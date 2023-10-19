@@ -11,28 +11,26 @@
   "tasks": {
     "build": {
       "name": "build",
-      "command": "npm run build",
-      "runAtStart": false
+      "command": "npm run build"
     },
     "start": {
       "name": "start-gateway",
-      "command": "npm run start-gateway-server",
-      "runAtStart": false
+      "command": "npm run start-gateway-server"
     },
     "test": {
       "name": "test",
-      "command": "npm run test",
-      "runAtStart": false
+      "command": "npm run test"
     },
     "start-gateway-server": {
       "name": "start-gateway-server",
-      "command": "npm run start-gateway-server",
-      "runAtStart": false
+      "command": "npm run start-gateway-server"
     },
     "start-peripheral-server": {
       "name": "start-peripheral-server",
       "command": "npm run start-peripheral-server",
-      "runAtStart": false
+      "preview": {
+        "port": 9091
+      }
     }
   }
 }
