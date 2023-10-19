@@ -7,30 +7,6 @@
 	},
 	"item": [
 		{
-			"name": "ping",
-			"id": "1819accf-5af9-4e44-a313-a36282c056d5",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "https://j9fvk6-9091.csb.app/ping",
-					"protocol": "https",
-					"host": [
-						"j9fvk6-9091",
-						"csb",
-						"app"
-					],
-					"path": [
-						"ping"
-					]
-				}
-			},
-			"response": []
-		},
-		{
 			"name": "getPeripherals",
 			"id": "3e2e43f3-0296-4191-b1a9-4e2b635e68d5",
 			"protocolProfileBehavior": {
@@ -40,16 +16,42 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "https://j9fvk6-9091.csb.app/peripherals/get",
+					"raw": "https://j9fvk6-9090.csb.app/peripherals/get",
 					"protocol": "https",
 					"host": [
-						"j9fvk6-9091",
+						"j9fvk6-9090",
 						"csb",
 						"app"
 					],
 					"path": [
 						"peripherals",
 						"get"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getPeripheral",
+			"id": "52495a85-1ca8-4624-9037-2ab244f98516",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://j9fvk6-9090.csb.app/peripherals/get/65313cf4fd6a06bbc81e6de8",
+					"protocol": "https",
+					"host": [
+						"j9fvk6-9090",
+						"csb",
+						"app"
+					],
+					"path": [
+						"peripherals",
+						"get",
+						"65313cf4fd6a06bbc81e6de8"
 					]
 				}
 			},
@@ -66,7 +68,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"uid\": 123,\r\n    \"vendor\": \"ACME\",\r\n    \"dateCreated\": \"2023-10-18T00:00:00.000Z\",\r\n    \"status\": \"online\"\r\n}",
+					"raw": "{\r\n    \"uid\": 123,\r\n    \"vendor\": \"ALUY\",\r\n    \"dateCreated\": \"2023-10-18T00:00:00.000Z\",\r\n    \"status\": \"online\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -74,16 +76,86 @@
 					}
 				},
 				"url": {
-					"raw": "https://j9fvk6-9091.csb.app/peripherals/create",
+					"raw": "https://j9fvk6-9090.csb.app/peripherals/create",
 					"protocol": "https",
 					"host": [
-						"j9fvk6-9091",
+						"j9fvk6-9090",
 						"csb",
 						"app"
 					],
 					"path": [
 						"peripherals",
 						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "updatePeripheral",
+			"id": "1d859827-db01-4f17-8868-e01243773ee9",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"uid\": 123,\r\n    \"vendor\": \"ACME\",\r\n    \"dateCreated\": \"2023-10-18T00:00:00.000Z\",\r\n    \"status\": \"offline\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://j9fvk6-9090.csb.app/peripherals/update/65313cf4fd6a06bbc81e6de8",
+					"protocol": "https",
+					"host": [
+						"j9fvk6-9090",
+						"csb",
+						"app"
+					],
+					"path": [
+						"peripherals",
+						"update",
+						"65313cf4fd6a06bbc81e6de8"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "deletePeripheral",
+			"id": "5c98131f-34de-45fd-9157-201133bc767c",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"uid\": 123,\r\n    \"vendor\": \"ACME\",\r\n    \"dateCreated\": \"2023-10-18T00:00:00.000Z\",\r\n    \"status\": \"offline\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://j9fvk6-9090.csb.app/peripherals/delete/65313e26fd6a06bbc81e6df7",
+					"protocol": "https",
+					"host": [
+						"j9fvk6-9090",
+						"csb",
+						"app"
+					],
+					"path": [
+						"peripherals",
+						"delete",
+						"65313e26fd6a06bbc81e6df7"
 					]
 				}
 			},
