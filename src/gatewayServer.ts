@@ -5,10 +5,11 @@ import { config } from "./config/config";
 const router = express();
 import Logging from "./library/Logging";
 import gatewayRoutes from "./routes/Gateway";
+import peripheralRoutes from "./routes/Peripheral";
 
 // Conexión a la base de datos
 mongoose
-  .connect(config.mongo.url + "gateway", { retryWrites: true, w: "majority" })
+  .connect(config.mongo.url + "gateways", { retryWrites: true, w: "majority" })
   .then(() => {
     Logging.info("Conexión a la base de datos gateway establecida");
     StartServer();
@@ -48,7 +49,7 @@ router.use((req, res, next) => {
 
 /** Routes */
 router.use("/gateways", gatewayRoutes);
-//router.use('/books', bookRoutes);
+router.use("/peripherals", peripheralRoutes);
 
 /** Healthcheck */
 router.get("/ping", (req, res, next) =>
@@ -69,7 +70,7 @@ router.use((req, res, next) => {
 
 http
   .createServer(router)
-  .listen(config.gateway_server.port, () =>
-    Logging.info(`Server is running on port ${config.gateway_server.port}`),
+  .listen(config.server.port, () =>
+    Logging.info(`Server is running on port ${config.server.port}`),
   );
 };
