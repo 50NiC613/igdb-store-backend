@@ -17,7 +17,7 @@ router.patch(
   controller.updateGateway,
 );
 router.patch(
-  "/addPeripheral/",  ValidateJoi(Schemas.gateway.add),
+  "/addPeripheral/",
   controller.addPeripheralToGateway,
 );
 router.delete("/delete/:gatewayId", controller.deleteGateway);
