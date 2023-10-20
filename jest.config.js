@@ -4,6 +4,8 @@ module.exports = {
   testEnvironment: "node",
   testMatch: ["**/__tests__/**/*.test.ts"],
   verbose: true,
+  silent: true,
   forceExit: true,
+  //testTimeout: 999999,
   //clearMocks:true
 };

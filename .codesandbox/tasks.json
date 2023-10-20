@@ -21,6 +21,10 @@
       "name": "test",
       "command": "npm run test"
     },
+    "test:watch": {
+      "name": "test-watch",
+      "command": "npm run test:watch"
+    },
     "start-gateway-server": {
       "name": "start-gateway-server",
       "command": "npm run start-gateway-server"
