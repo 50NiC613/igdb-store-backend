@@ -14,6 +14,6 @@ mongoose
   })
   .catch((err) => Logging.error(err));
 // Iniciar el servidor
-app.listen(config.server.port, () => {
+export const server = app.listen(config.server.port, () => {
   Logging.info(`Server is running on port ${config.server.port}`);
 });

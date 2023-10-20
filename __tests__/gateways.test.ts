@@ -1,18 +1,12 @@
 import request from "supertest";
 import createServer from "../src/library/Server";
 import Gateway from "../src/models/Gateway";
-import { MongoMemoryServer } from "mongodb-memory-server";
-import * as mongoose from "mongoose";
-const app = createServer;
-
-beforeAll(async () => {
-  const mongoServer = await MongoMemoryServer.create();
-  await mongoose.connect(mongoServer.getUri());
-});
+import mongoose from "mongoose";
+import { server } from "../src/app";
 
 afterAll(async () => {
-  await mongoose.disconnect();
   await mongoose.connection.close();
+  server.close();
 });
 
 beforeEach(async () => {
@@ -21,7 +15,7 @@ beforeEach(async () => {
 
 describe("createGateway", () => {
   it("should create a new gateway", async () => {
-    const res = await request(app).post("/gateways/create").send({
+    const res = await request(server).post("/gateways/create").send({
       serialNumber: "123456",
       name: "Test Gateway",
       ipv4Address: "192.168.1.1",
@@ -37,7 +31,15 @@ describe("createGateway", () => {
 
 describe("getGateways", () => {
   it("should read all gateways", async () => {
-    const res = await request(app).get("/gateways/get");
+    const res = await request(server).get("/gateways/get");
+    expect(res.statusCode).toEqual(200);
+  });
+});
+describe("gateways are json ", () => {
+  it("should read all gateways as json", async () => {
+    const res = await request(server)
+      .get("/gateways/get")
+      .set("Content-Type", "application/json");
     expect(res.statusCode).toEqual(200);
   });
 });
